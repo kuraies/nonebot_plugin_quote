@@ -132,22 +132,34 @@
                     <span class="username">{{ msg.username }}</span>
 
                     {% if msg.user_type == 'member' %}
-                    <div class="level member"
-                         style="background-color: {% if msg.title %}#e4daf3{% else %}#E2E2E2{% endif %};
-                                     color: {% if msg.title %}#b589f6{% else %}#a2a2a2{% endif %};">
-                        <div>LV{{ msg.level }}</div>
-                        <div>{% if msg.title %} {{ msg.title }}{% endif %}</div>
-                    </div>
+                        <div class="level member"
+                             style="background-color: {% if msg.title %}#e4daf3{% else %}#E2E2E2{% endif %};
+                                    color: {% if msg.title %}#b589f6{% else %}#a2a2a2{% endif %};">
+                            <div>LV{{ msg.level }}</div>
+                            {% if msg.title %}
+                                <div>{{ msg.title }}</div>
+                            {% endif %}
+                        </div>
+
                     {% elif msg.user_type == 'admin' %}
-                    <div class="level admin">
-                        <div>LV{{ msg.level }}</div>
-                        <div>{% if msg.title %} {{ msg.title }}{% else %} 管理员{% endif %}</div>
-                    </div>
+                        <div class="level admin">
+                            <div>LV{{ msg.level }}</div>
+                            {% if msg.title %}
+                                <div>{{ msg.title }}</div>
+                            {% else %}
+                                <div>管理员</div>
+                            {% endif %}
+                        </div>
                     {% elif msg.user_type == 'owner' %}
-                    <div class="level owner">
-                        <div>LV{{ msg.level }}</div>
-                        <div>{% if msg.title %} {{ msg.title }}{% else %} 群主{% endif %}</div>
-                    </div>
+                        <div class="level owner">
+                            <div>LV{{ msg.level }}</div>
+                            {% if msg.title %}
+                                <div>{{ msg.title }}</div>
+                            {% else %}
+                                <div>群主</div>
+                            {% endif %}
+                        </div>
+
                     {% endif %}
 
                 </div>
